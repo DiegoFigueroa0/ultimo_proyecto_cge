@@ -31,6 +31,8 @@ export const routes: Routes = [
   {
     path: 'mapa-medidores',
     loadChildren: () =>
-      import('./pages/mapa-medidores/mapa-medidores.routes').then((m) => m.routes),
+      import('./pages/mapa-medidores/mapa-medidores.routes').then(
+        (m) => m.routes
+      ),
   },
 ];

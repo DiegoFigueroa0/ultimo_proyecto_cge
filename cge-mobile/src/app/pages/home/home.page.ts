@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -13,7 +13,7 @@ import { AuthService } from '../../services/auth.service';
 export class HomePage implements OnInit {
   nombreCliente: string | null = null;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   async ngOnInit() {
     this.nombreCliente = await this.authService.getNombreCliente();
@@ -21,8 +21,6 @@ export class HomePage implements OnInit {
 
   async logout() {
     await this.authService.logout();
-    // al borrar sesión, el guard o el flujo te llevará a login en el futuro;
-    // por ahora basta con recargar:
-    location.href = '/';
+    this.router.navigateByUrl('/login', { replaceUrl: true });
   }
 }
