@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Mis Medidores</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list *ngIf="medidores.length; else noData">
+    <ion-item *ngFor="let m of medidores">
+      <ion-label>
+        <h2>{{ m.codigo_medidor }}</h2>
+        <p>{{ m.direccion_suministro }}</p>
+        <p>Estado: {{ m.estado ? 'Activo' : 'Inactivo' }}</p>
+      </ion-label>
+      <ion-button slot="end" size="small" (click)="verLecturas(m)">
+        Lecturas
+      </ion-button>
+      <ion-button slot="end" size="small" fill="outline" (click)="verEnMapa(m)">
+        Mapa
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ng-template #noData>
+    <p>No se encontraron medidores.</p>
+  </ng-template>
+</ion-content>

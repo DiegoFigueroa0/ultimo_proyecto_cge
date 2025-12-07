@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Boleta del mes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ng-container *ngIf="boleta as b; else noBoleta">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          {{ b.mes }}/{{ b.anio }}
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>kWh consumidos: {{ b.kwh_total }}</p>
+        <p>Tarifa base: {{ b.tarifa_base | currency:'CLP' }}</p>
+        <p>Cargos: {{ b.cargos | currency:'CLP' }}</p>
+        <p>IVA: {{ b.iva | currency:'CLP' }}</p>
+        <h2>Total a pagar: {{ b.total_pagar | currency:'CLP' }}</h2>
+        <p>Estado: {{ b.estado }}</p>
+
+        <ion-button
+          expand="block"
+          class="ion-margin-top"
+          (click)="descargarPdf()"
+          [disabled]="descargando"
+        >
+          {{ descargando ? 'Descargando...' : 'Descargar PDF' }}
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+
+  <ng-template #noBoleta>
+    <p>No se encontró boleta para este cliente.</p>
+  </ng-template>
+</ion-content>

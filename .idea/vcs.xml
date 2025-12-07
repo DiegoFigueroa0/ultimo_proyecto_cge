@@ -3,7 +3,6 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Api-cge" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/app-movil/cge-mobile" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/front-cge" vcs="Git" />
   </component>
 </project>

@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Lecturas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list *ngIf="lecturas.length; else noData">
+    <ion-item *ngFor="let l of lecturas">
+      <ion-label>
+        <h2>{{ l.mes }}/{{ l.anio }}</h2>
+        <p>kWh: {{ l.lectura_kwh }}</p>
+        <p *ngIf="l.observacion">Obs: {{ l.observacion }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ng-template #noData>
+    <p>No hay lecturas para este medidor.</p>
+  </ng-template>
+</ion-content>
